@@ -22,7 +22,7 @@ public class CandidateManager implements CandidateService {
 		super();
 		this.candidateDao = candidateDao;
 	}
-
+ //dsfsd
 	@Override
 	public DataResult<List<Candidate>> getAll() {
 	    
