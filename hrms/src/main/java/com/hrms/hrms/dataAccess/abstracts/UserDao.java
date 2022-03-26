@@ -5,11 +5,10 @@ import java.util.Optional;
 import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.hrms.hrms.entities.concretes.JobTitle;
+import com.hrms.hrms.entities.concretes.User;
 
-public interface JobTitleDao extends JpaRepository<JobTitle, Integer> {
-	Optional<Job> findByName(String name);
-
+public interface UserDao extends JpaRepository<User, Integer>{
+	
 	
 
 }

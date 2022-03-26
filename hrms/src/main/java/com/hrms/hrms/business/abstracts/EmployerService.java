@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.hrms.hrms.core.abstracts.utilities.result.DataResult;
 import com.hrms.hrms.core.abstracts.utilities.result.Result;
-import com.hrms.hrms.entities.concretes.Candidate;
+import com.hrms.hrms.entities.concretes.Employer;
 
-public interface CandidateService {
+public interface EmployerService {
 
-	DataResult<List<Candidate>> getall();
+	DataResult<List<Employer>> getAll();
 
-	Result add(Candidate candidate);
+	Result add(Employer employer);
 
 }

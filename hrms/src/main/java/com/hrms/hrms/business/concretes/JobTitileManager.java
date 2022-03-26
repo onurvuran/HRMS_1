@@ -6,8 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hrms.hrms.business.abstracts.JobTitleService;
+import com.hrms.hrms.core.abstracts.utilities.adapters.Businness.BusinessRules;
+import com.hrms.hrms.core.abstracts.utilities.result.ErrorResult;
+import com.hrms.hrms.core.abstracts.utilities.result.Result;
+import com.hrms.hrms.core.abstracts.utilities.result.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.JobTitleDao;
 import com.hrms.hrms.entities.concretes.JobTitle;
+
 @Service
 public class JobTitileManager implements JobTitleService {
 	@Autowired
@@ -21,6 +26,24 @@ public class JobTitileManager implements JobTitleService {
 	@Override
 	public List<JobTitle> getAll() {
 		return this.jobTitleDao.findAll();
+	}
+
+	@Override
+	public Result add(JobTitle jobTitle) {
+		final Result result = BusinessRules.run(isJobExists(jobTitle));
+
+		if (!result.isSuccess()) {
+			return result;
+		}
+
+		this.jobTitleDao.save(jobTitle);
+
+		return new SuccessResult("iş başlığı eklendi.");
+	}
+
+	public Result isJobExists(JobTitle jobTitle) {
+		return this.jobTitleDao.findByName(jobTitle.getTitle()).isEmpty() ? new SuccessResult()
+				: new ErrorResult("Bu başlık zatn kullanılıyor.");
 	}
 
 }
