@@ -42,8 +42,8 @@ public class JobTitileManager implements JobTitleService {
 	}
 
 	public Result isJobExists(JobTitle jobTitle) {
-		return this.jobTitleDao.findByName(jobTitle.getTitle()).isEmpty() ? new SuccessResult()
-				: new ErrorResult("Bu başlık zatn kullanılıyor.");
+		return this.jobTitleDao.findByTitle(jobTitle.getTitle()).isEmpty() ? new SuccessResult()
+				: new ErrorResult("Bu başlık zaten kullanılıyor.");
 	}
 
 }

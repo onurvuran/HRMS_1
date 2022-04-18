@@ -19,8 +19,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@PrimaryKeyJoinColumn(name = "c_id", referencedColumnName = "id")
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "id")
 public class Employer extends User {
+//	@Id
+//	@Column(name = "employer_id")
+//	private String employer_id;
 
 	@Column(name = "company_name")
 	private String companyName;
@@ -33,5 +36,8 @@ public class Employer extends User {
 
 	@OneToOne(mappedBy = "employer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private EmployeeVerification employeeVerification;
+	
+	
+	
 
 }
